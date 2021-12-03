@@ -2,8 +2,6 @@
 
 Quetzal es un lenguaje de programación inspirado en C, su característica principal es la inclusión de tipos explícitos. El sistema de tipos de Quetzal realiza una formalización de los tipos de C y Java. Esto permite a los desarrolladores definir variables y funciones tipadas sin perder la esencia. Otra inclusión importante de Quetzal es la simplificación de los lenguajes C y Java para poder realizar diferentes instrucciones en menos pasos.
 
-java es un lenguaje de programación bastante reciente que le interesa a científicos de datos, estadísticos y analistas financieros. Este cuenta con distintas características atractivas para los programadores. Aún así, java al ser un lenguaje de programación bastante reciente, hay muy pocos lugares donde se pueda probar su sintaxis de manera sencilla. Es por eso que se desarrollo Quetzal, un lenguaje de programación basado en java que se podrá programar desde el navegador.
-
 A continuación, se detalla la sintaxis que tendrá Quetzal. Además de algunos archivos de entrada de prueba que podrán probar para familiarizarse con la sintaxis.
 
 ## Tabla de Contenido
@@ -31,10 +29,12 @@ Los comentarios pueden ser:
 
 - Una línea (//)
 - Múltiples líneas (/* ... */)
+```java
+    /*
         Esto es un
         comentario de
         múltiples líneas
-    */
+    *
 ```
 
 ## Tipos <a name="tipos"></a>
