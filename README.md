@@ -1,10 +1,61 @@
 # Quetzal OCL2
 
-Quetzal es un lenguaje de programación inspirado en C, su característica principal es la inclusión de tipos explícitos. El sistema de tipos de Quetzal realiza una formalización de los tipos de C y Java. Esto permite a los desarrolladores definir variables y funciones tipadas sin perder la esencia. Otra inclusión importante de Quetzal es la simplificación de los lenguajes C y Java para poder realizar diferentes instrucciones en menos pasos.
-
-A continuación, se detalla la sintaxis que tendrá Quetzal. Además de algunos archivos de entrada de prueba que podrán probar para familiarizarse con la sintaxis.
-
 ## Tabla de Contenido
+1. [Competencias Generales](#competenciasGenerales)
+2. [Competencias Especificas](#competencias)
+3. [Descripción ](#descripción)
+4. [Flujo de la Aplicación](#flujo)
+5. [Sintaxis de Quetzal](#sintaxis)
+6. [Generación de Código de 3 direcciones](#3d)
+
+## Competencias Generales <a name="competenciasGenerales"></a>
+Que el estudiante aplique la fase de síntesis del compilador para realizar un traductor e intérprete utilizando herramientas.
+
+## Competencias Especifica <a name="competencias"></a>
+-	Que el estudiante utilice un generador de analizadores léxicos y sintácticos para construir un traductor. 
+-	Que el estudiante implemente la ejecución de dicha traducción utilizando traducción dirigida por la sintaxis haciendo uso de atributos heredados y sintetizados. 
+-	Que el estudiante comprenda los conceptos acerca de traducciones. 
+-	Que el estudiante maneje la pila que proporciona el analizador sintáctico para simular el paso de atributos heredados. 
+-	Que el estudiante aplique los conocimientos aprendidos en clase para generar código intermedio. 
+
+## Descripción <a name="descripción"></a>
+Quetzal es un lenguaje de programación inspirado en C, su característica principal es la inclusión de tipos implícitos. El sistema de tipos de Quetzal realiza una formalización de los tipos de C y Java. Esto permite a los desarrolladores definir variables y funciones tipadas sin perder la esencia. Otra inclusión importante de Quetzal es la simplificación de los lenguajes C y Java para poder realizar diferentes instrucciones en menos pasos.
+
+Adicional Quetzal tendrá 2 flujos, se podrá interpretar el código fuente ingresado y efectuar todas sus instrucciones, o bien se puede traducir este lenguaje a un lenguaje intermedio basado en un lenguaje de 3 direcciones, este se podrá ejectuar posteriormente en cualquier compilador de C, tomando en cuenta las reglas especificas de un lenguaje de 3 direcciones.
+ 
+### **Componentes de la aplicación:** 
+Se requiere la implementación de un entorno de desarrollo que servirá para la creación de aplicaciones en lenguaje Quetzal. 
+
+#### **Componentes de la aplicación:** 
+    Características básicas 
+    •	Numero de línea y columna 
+    •	Botón para interpretar 
+    •	Botón para traducir
+    •	Reporte de errores 
+    •	Reporte de tabla de símbolos 
+    •	Reporte de AST 
+    •	Reporte Gramatical
+    •	Salida del Código Intermedio
+
+#### **Consola:**
+    La consola es un área especial dentro del IDE que permite visualizar las notificaciones, errores, y advertencias que se produjeron durante el proceso de análisis de un archivo de entrada. 
+
+## Flujo de la aplicación  <a name="flujo"></a>
+
+A continuación, se explica el flujo de la aplicación. 
+La aplicación es sencilla por lo que su funcionalidad se basa en interpretar, generar código intermedio y desplegar reportes. 
+
+-	Interpreta: Esta opción nos va a permitir interpretar una entrada. El programa recibe un archivo de entrada de código de alto nivel y ejecuta las instrucciones.
+-	Traducir: Esta opción nos va a permitir traducir una entrada. El programa recibe un archivo de entrada de código de alto nivel y traduce a código intermedio en la sintaxis de tres direcciones.  
+-	Reportes: Esta opción nos va a permitir visualizar los reportes generados después de traducir una entrada. 
+ 
+En la ejecución se debe implementar los dos métodos de recuperación: uno para los errores léxicos y sintácticos descartando hasta el “;”; y otro para los errores semánticos, se debe descartar la instrucción con error. 
+
+![Flujo Aplicación](flujo_quetzal.png)
+
+
+## Sintaxis de Quetzal <a name="sintaxis"></a>
+A continuación, se detalla la sintaxis que tendrá Quetzal. Además de algunos archivos de entrada de prueba que podrán probar para familiarizarse con la sintaxis.
 
 1. [Comentarios](#comentarios)
 2. [Tipos](#tipos)
@@ -674,3 +725,4 @@ println(b);             // Imprime 'Estructura(1, Estructura(0, null))'
 
 
 ```
+## Generación de Código de 3 direcciones <a name="3d"></a>
