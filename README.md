@@ -34,7 +34,7 @@ Los comentarios pueden ser:
         Esto es un
         comentario de
         múltiples líneas
-    *
+    */
 ```
 
 ## Tipos <a name="tipos"></a>
@@ -73,7 +73,7 @@ Estos son un conjunto de valores indexados entre 1 hasta n, que pueden ser de di
 ```java
 [10, 20, 30, 40]
 ["Hola", "Mundo"]
-['a', 2.0, 5, ["Hola", "Mundo"]]
+[1, 2, 5, [1, 2]]
 ```
 
 Los arreglos cuentan con distintas operaciones que se detallarán en la sección de [_Arreglos_](#arrays).
@@ -158,12 +158,12 @@ Entre las operaciones con cadenas (strings) vamos a encontrar las siguientes:
 - **Acceso a una pocisión:** El acceso a un elemento de una cadena se define de la siguiente manera: `string.caracterOfPosition(posición)`, el cual devolvera el caracter correspondiente a esa posición
     ```java
     animal = "Tigre";
-    println(animal.caracterOfPosition(2)); //i
+    println(animal.caracterOfPosition(2)); //g
     ```
 - **Acceso a una porción:** El acceso a una porción de una cadena se define de la siguiente manera: `string.subString(inicial,final)`, el cual devolvera la cadena correspondiente al intervalo definido.
     ```java
     animal = "Tigre";
-    println(animal.subString(2,4)); //igr
+    println(animal.subString(2,4)); //gre
     ```
 - **Tamaño de una cadena:** La obtención del número de elementos de una cadena se define por la función `cadena.length()`
     ```java
