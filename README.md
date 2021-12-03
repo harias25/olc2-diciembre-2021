@@ -7,6 +7,8 @@
 4. [Flujo de la Aplicación](#flujo)
 5. [Sintaxis de Quetzal](#sintaxis)
 6. [Generación de Código de 3 direcciones](#3d)
+7. [Reportes](#reportes)
+8. [Restricciones y Entregables](#restricciones)
 
 ## Competencias Generales <a name="competenciasGenerales"></a>
 Que el estudiante aplique la fase de síntesis del compilador para realizar un traductor e intérprete utilizando herramientas.
@@ -726,3 +728,303 @@ println(b);             // Imprime 'Estructura(1, Estructura(0, null))'
 
 ```
 ## Generación de Código de 3 direcciones <a name="3d"></a>
+Cuando el compilador termine la fase de análisis de un programa realizará una transformación a una representación intermedia equivalente al código de alto nivel.  
+Ya que código intermedio no es en sí un lenguaje ya definido sino un concepto, por facilidades de calificación y de pruebas se utilizará la estructura del lenguaje C como referencia a código intermedio, manejando ciertas limitaciones para que se apliquen correctamente los conceptos de generación de código intermedio.
+
+
+### **Tipos de Dato**
+El lenguaje solo acepta tipos de dato numéricos, es decir tipos int y float. Por facilidad se recomienda trabajar todas las variables como tipo float.
+
+Consideraciones: 
+- Está prohibido el uso de otros tipos de dato. 
+- Las estructuras Heap y Stack se realizan por medio de arreglos de tipo float. 
+- El uso de arreglos está permitido, queda a discreción del estudiante como implementarlo
+
+### **Temporales**
+Los temporales serán creados por el compilador en el proceso de generación de código intermedio. Estos serán variables de tipo float, el identificador asociado queda a discreción del estudiante, pero se recomienda utilizar la que se muestra a continuación. 
+
+```c
+t[0-9]+ 
+ 
+t1 t13924 
+```
+
+### **Etiquetas**
+Las etiquetas serán creadas por el compilador en el proceso de generación de código intermedio. El identificador asociado a las etiquetas queda a discreción del estudiante, aunque se recomienda utilizar la que se muestra a continuación. 
+```c
+L[0-9]+ 
+ 
+L1 
+L43 
+```
+### **Identificadores**
+Un identificador será utilizado para dar un nombre a variables, métodos o estructuras. Es una secuencia de caracteres alfabéticos [A-Z a-z] incluyendo el guion bajo [_] o dígitos [0-9] que comienzan con un carácter alfabético o guion bajo. 
+
+```c
+_id1 
+Id1 
+Id_32 
+```
+### **Comentarios**
+Un comentario es un componente léxico del lenguaje que no es tomado en cuenta para el análisis sintáctico de la entrada. Existirán dos tipos de comentarios:  
+-	Los comentarios de una línea que serán delimitados al inicio con los símbolos “//” y al final con un carácter de finalización de línea  
+-	Los comentarios con múltiples líneas que empezarán con los símbolos “/*” y terminarán con los símbolos “*/”. 
+
+```c
+// COMENTARIO DE UNA LINEA 
+ 
+/** 
+* COMENTARIO MULTILINEA 
+*/ 
+
+```
+### **Operadores aritméticos**
+Las operaciones aritméticas contarán con un argumento 1, argumento 2, campo para el resultado y un operador perteneciente a la siguiente tabla: 
+![Operadores Aritmeticos](aritmeticos3d.png)
+
+Consideraciones 
+	- 	Únicamente se permite el uso de dos argumentos en una expresión. 
+
+### **Saltos**
+Para definir el flujo que seguirá el intérprete se contará con bloques de código, estos bloques están definidos por etiquetas y saltos, los saltos son aquellos que, definiendo una etiqueta y una posible condición, el flujo del código se desplaza hasta el bloque contenido en luego de dicha etiqueta. El lenguaje C cuenta con 2 tipos de saltos, los cuales son:  
+- Salto condicional: Contará con una condición para decidir si se realiza el salto o no. 
+-	Salto incondicional: Se realizará el salto siempre. 
+-	
+#### **Saltos incondicionales **
+Los saltos incondicionales contarán únicamente con resultado y operador, donde el resultado contendrá la etiqueta destino y el operador estará definido por la instrucción goto. Este realizará el salto hacia una etiqueta que se le especifique. 
+
+```c
+goto L1;  
+printf(“%c”, 64); //Esta instruccion no se ejecuta L1: 
+T2 = 100; 
+```
+#### **Saltos condicionales**
+Para simular los saltos condicionales se utilizará la instrucción IF del lenguaje C que tendrá como condición una expresión relacional. 
+![Saltos Condicionales](saltos3d.png)
+
+```c
+If(5 < 10) goto L1; goto L2; 
+L1: 
+//código si la condición es verdadera 
+ 
+L2: 
+//código si la condición es falsa 
+
+```
+Consideraciones 
+-	Existen expresiones booleanas de uno y dos argumentos, tal como se muestra en la Figura 6.37 del libro. Las expresiones booleanas con operadores relacionales se traducen en instrucciones if con un salto para verdadero y otro salto para falso, página 404 del libro. 
+-	La instrucción If solo permite una instrucción, está prohibido el uso de if anidados. 
+-	No se permite el uso de la instrucción Else. 
+
+### **Asignación a temporales**
+La asignación nos va a permitir cambiar el valor de los temporales, para lograrlo se utiliza el operador igual, este permite una asignación directa o una expresión. 
+
+```c
+//Entrada codigo alto nivel 
+Console.log(1+2*5); 
+ 
+//Salida codigo intermedio en lenguaje C 
+T1 = 2 * 5; 
+T2 = 1 + T1; 
+ 
+Print(“%d”, T2);  
+```
+
+### **Métodos**
+Estos son bloques de código a los cuales se accede únicamente con una llamada al método. Al finalizar su ejecución se retorna el control al punto donde fue llamado para continuar con las siguientes instrucciones.
+
+```c
+function funcion1(number a, number b) : number{     number c = a + b;     return c; 
+} 
+ 
+void funcion1(){ 
+    T1 = P + 1; 
+    T2 = STACK[T1]; //Variable a 
+ 
+    T3 = P + 2; 
+    T4 = STACK[T3]; //Variable b 
+ 
+    T5 = T2 + T4; //a + b 
+    T6 = P + 3; 
+    STACK[T6] = T5; //Variable c 
+ 
+    T7 = P + 3; 
+    T8 = STACK[T7]; //Obtengo la Variable c 
+    STACK[P] = T8; //Guardo el valor que retorna la funcion     goto L0; //Simulacion de un return con saltos a etiquetas 
+ 
+    L0: //Etiqueta de retorno     return; 
+}  
+```
+
+Consideraciones 
+-	Está prohibido el uso de paso de parámetros en los métodos, el estudiante debe utilizar la pila para el paso de parámetros. 
+-	Los métodos solo pueden ser de tipo void. 
+-	Al final de cada método incluir la instrucción “return;”. 
+
+### **Llamadas Métodos**
+Esta instrucción nos permite invocar métodos. 
+
+```c
+Identificador(); 
+ 
+// Al finalizar la ejecución del método se ejecutan las instrucciones posteriores a la llamada 
+ 
+Void main(){ 
+   Funcion1(); // Se llama a la funcion1 desde el metodo main 
+  return;  
+} 
+ 
+Void Funcion1(){   printf(“%d”, 100); 
+  return;  
+} 
+
+```
+Consideraciones 
+Al hacer la llamada el flujo cambia y empieza a ejecutar las instrucciones del método, al finalizar regresa al punto donde fue llamado y sigue ejecutando las siguientes instrucciones
+
+### **Prinf**
+Su función principal es imprimir en consola un valor definido según el formato del parámetro que se le asigne, la sintaxis y parámetros permitidos son los siguientes: 
+
+![Saltos Condicionales](prinf3d.png)
+
+```c
+printf(“%e”, (int)900) // imprime 900 
+ 
+printf(“%c”, (char)65) // imprime A 
+ 
+print(“%f”, (float)65.4) // imprime 65.4  
+```
+
+### **Estructuras en tiempo de ejecución**
+El proceso de compilación genera el código intermedio y este se va a ejecutar, siendo indispensable para el flujo de la aplicación. En el código intermedio no existen cadenas, operaciones complejas, llamadas a métodos con parámetros y muchas otras cosas que sí existen en los lenguajes de alto nivel. 
+Para el proyecto se va a contar con 2 estructuras lineales y por convención llevaran el nombre de stack y heap, estas nos van a servir para almacenar los valores de nuestros temporales y poder hacer la simulación de ejecución del código intermedio. 
+
+### **Estructuras en tiempo de ejecución **
+El proceso de compilación genera el código intermedio y este se va a ejecutar, siendo indispensable para el flujo de la aplicación. En el código intermedio no existen cadenas, operaciones complejas, llamadas a métodos con parámetros y muchas otras cosas que sí existen en los lenguajes de alto nivel. 
+Para el proyecto se va a contar con 2 estructuras lineales y por convención llevaran el nombre de stack y heap, estas nos van a servir para almacenar los valores de nuestros temporales y poder hacer la simulación de ejecución del código intermedio. 
+
+#### **STACK**
+El stack es la estructura que se utiliza en código intermedio para controlar las variables locales, y la comunicación entre métodos (paso de parámetros y obtención de retornos en llamadas a métodos). Se compone de ámbitos, que son secciones de memoria reservados exclusivamente para cierto grupo de sentencias.  
+Cada llamada a método o función que se realiza en el código de alto nivel cuenta con un espacio propio en memoria para comunicarse con otros métodos y administrar sus variables locales. Esto se logra modificando el puntero del Stack, que en el proyecto se identifica con la letra P, para ir moviendo el puntero de un ámbito a otro, cuidando de no corromper ámbitos ajenos al que se está ejecutando. 
+El puntero se identifica con la letra “P” y este contendrá la dirección de memoria donde comenzará el ámbito actual, su asignación se realizará exactamente igual que a como los terminales.
+
+```c
+float p; 
+ 
+P = P + 1; 
+```
+#### **HEAP**
+Es la estructura de control del entorno de ejecución encargada de guardar las referencias a variables globales o valores de cadenas y arreglos. El puntero se definirá con el identificador H y a diferencia de P (que aumenta y disminuye según lo dicta el código intermedio), este únicamente aumenta y aumenta, su función es brindar siempre la próxima posición libre de memoria.  
+Esta estructura también será la encargada de almacenar las cadenas de texto, guardando únicamente en cada posición el ASCII de cada uno de los caracteres que componen la cadena a guardar. 
+
+```c
+// Puntero H 
+H = H + 1; 
+T1 = H;  
+```
+#### **Acceso y asignación a estructuras en tiempo de ejecución**
+La sintaxis para acceso o asignación es la siguiente. 
+```c
+//Asignacion 
+Heap[0] = T1; 
+Stack[P] = 100; 
+ 
+ 
+//Acceso 
+T1 = Heap[0]; 
+T2 = Stack[P]; 
+```
+Consideraciones 
+-	La asignación a las estructuras se realiza por medio de temporales o valores constante, no se permite el uso de expresiones aritméticas o lógicas para la asignación a estas estructuras. 
+-	El acceso a las estructuras se realiza por medio de temporales, no se permite la asignación a una estructura mediante el acceso a otra estructura, es decir “stack[0] = heap[100];”. 
+-	Si el acceso a las estructuras se hace por medio de temporales, se debe realizar un casteo ya que los temporales son de tipo float. Ej. “stack[(int)t1] = 1”. 
+
+### **Encabezado**
+En esta sección se definirán todas las variables y estructuras a utilizar. Únicamente en esta sección se permite el uso de declaraciones, no se pueden realizar declaraciones adentro de métodos. La estructura del encabezado se muestra a continuación. 
+
+```c
+#include <stdio.h> //Importar para el uso de Printf 
+  
+float heap[16384]; //Estructura para heap float stack[16394]; //Estructura para stack float p; //Puntero P float h; //Puntero H 
+float t1, t2, t3, t4, t5, t6, t7, t8, t9, t10; //Lista de temporales utilizados  
+```
+
+### **Método Main**
+En este método iniciará el flujo de ejecución del código traducido. Su estructura es la siguiente: 
+```c
+void main() {     //Instrucciones 
+    return; 
+} 
+```
+
+## Reportes <a name="reportes"></a>
+
+### **Tabla de símbolos**
+Este reporte mostrará la tabla de símbolos durante (utilizando la función graficar_ts()) y después de la ejecución del archivo. Se deberán de mostrar todas las variables, funciones y procedimientos que fueron declarados, así como su tipo y toda la información que el estudiante considere necesaria. 
+
+### **AST**
+Este reporte mostrara el árbol de análisis sintáctico que se produjo al analizar el archivo de entrada. Este debe de representarse como un grafo, se recomienda se utilizar Graphviz. El Estudiante deberá mostrar los nodos que considere necesarios y se realizarán preguntas al momento de la calificación para que explique su funcionamiento. 
+
+### **Reporte de errores**
+El traductor e intérprete deberá ser capaz de detectar todos los errores que se encuentren durante el proceso de traducción. Todos los errores se deberán de recolectar y se mostrará un reporte de errores en el que, como mínimo, debe mostrarse el tipo de error, su ubicación y una breve descripción de por qué se produjo. 
+Los tipos de errores se deberán de manejar son los siguientes: 
+
+- Errores léxicos. 
+-	Errores sintácticos. 
+-	Errores semánticos 
+
+La tabla de errores debe contener la siguiente información: 
+-	Línea: Número de línea donde se encuentra el error. 
+-	Columna: Número de columna donde se encuentra el error. 
+-	Tipo de error: Identifica el tipo de error encontrado. Este puede ser léxico, sintáctico o semántico. 
+-	Descripción del error: Dar una explicación concisa de por qué se generó el error. 
+-	Ámbito: Si fue en una función(decir en cual fue) o en el ámbito global. 
+
+Consideraciones 
+Se deben reportar errores tanto en tiempo de traducción como tiempo de ejecución. Queda a discreción del estudiante si presentarlos en reportes separados o en un mismo reporte especificando en qué fase ocurrió el mismo. 
+
+### **Reporte gramatical**
+Se debe crear en la carpeta del equipo un archivo con Markdown que muestre las dos gramáticas con sintaxis BNF. En otro documento se debe mostrar la definición dirigida por la sintaxis con la gramática seleccionada, indicando que expresiones se utilizaron, precedencia, símbolos terminales y no terminales, y las reglas semánticas.  
+ 
+Tomar en cuenta que no es el código escrito, sino es un reporte de explicación generado automáticamente, diferente del producto entregable del proyecto que es más enfocado a la construcción del intérprete. Este reporte está enfocado más a la ejecución específica. 
+ 
+### **Manual técnico y de usuario**
+ 
+En la carpeta del equipo se debe crear con Markdown un archivo de manual técnico y otro de manual de usuario. Se puede utilizar cualquier referencia bibliográfica para elaborar los manuales, se sugiere ver este enlace del MIT: 
+https://web.mit.edu/course/21/21.guide/docution.htm 
+
+
+## Restricciones y Entregables <a name="restricciones"></a>
+
+### **Restricciones**
+- La herramienta para generar los analizadores del proyecto será JISON. La documentación se encuentra en el siguiente enlace http://zaa.ch/jison/docs/
+- No se pertiten el uso de Frameworks para el frontend como Vue, Angular o React, se deberá desarrollar un html simple con las importaciones de los js del interprete.
+-	Copias de proyectos tendrán de manera automática una nota de 0 puntos y serán reportados a la Escuela de Ciencias y Sistemas los involucrados. 
+-	El único método de calificación será por medio de Github-pages, si no esta publicado se tendrá una nota de de 0 puntos.
+-	El desarrollo y entrega del proyecto es individual o en parejas. 
+-	Únicamente se permite el uso de las instrucciones del lenguaje C establecidas en el enunciado.  
+
+### **Consideraciones**
+- No hay requerimientos mínimos. 
+- Durante la calificación se realizarán preguntas sobre el código para verificar la autoría de este, de no responder correctamente la mayoría de las preguntas se reportará la copia. 
+•	El repositorio únicamente debe contener el código fuente empleado para el desarrollo y el código que correra en GitHub Pages no deben existir archivos pdf o docx (utilizar un archivo .gitignore). 
+•	El sistema operativo para utilizar es libre. 
+•	Los lenguajes están basados en Java y C, por lo que el estudiante es libre de realizar archivos de prueba en estas herramientas, el funcionamiento debería ser el mismo y limitado a lo descrito en este enunciado. 
+•	Los estudiantes NO DEBEN REALIZAR UN INTERPRETE DE C. 
+•	Los estudiantes son libres de probar su código traducido en lenguaje C en un compilador local o en un compilador online. 
+•	En la siguiente página se encuentra con compilador de C online:  https://www.onlinegdb.com/online_c_compiler. 
+
+### **Calificación**
+-	La calificación del proyecto será mediante la aplicación web publicada en github pages. 
+-	El tiempo de calificación será de 20 minutos (puede aumentar dependiendo la cantidad de proyectos entregados). 
+-	La hoja de calificación describe cada aspecto a calificar, por lo tanto, si la funcionalidad a calificar falla en la sección indicada se tendrá 0 puntos en esa funcionalidad y esa nota no podrá cambiar si dicha funcionalidad funciona en otra sección. 
+-	Los archivos de entrada podrán ser modificados solamente antes de iniciar la calificación eliminando funcionalidades que el estudiante indique que no desarrollo. 
+-	Los archivos de entrada podrán ser modificados si contienen errores léxicos, sintácticos o semánticos no descritos en el enunciado o provocados para verificar el manejo y recuperación de errores. 
+-	Se utilizará un compilador de C para evaluar que la salida del archivo de entrada sea la correcta. 
+
+### **Entrega del proyecto**
+-	La entrega será mediante github, y se va a tomar como entrega el código fuente publicado en el repositorio a la fecha y hora establecidos. 
+-	Cualquier commit luego de la fecha y hora establecidos invalidará el proyecto, por lo que no se tendrá derecho a calificación. 
+-	No habrá prorroga 
+-	Fecha de entrega:  Viernes 8 de noviembre a las 23:59 PM 
+
