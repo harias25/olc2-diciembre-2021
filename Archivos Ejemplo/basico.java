@@ -37,8 +37,9 @@ void main(){
     else
         println("Entra acá");
 
-
-    
+    int edad = 62;
+    String respuesta = edad < 50 ? "Puede vacunarse" :   edad ==60  ? "Puede vacunarse con riesgo" :   "No puede vacunarse" ;
+    println(respuesta);  //No puede vacunarse
 }
 
 double operacionMatematica(char operador, int valor1, int valor2){

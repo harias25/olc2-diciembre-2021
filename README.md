@@ -248,7 +248,7 @@ println(animal == "Perro" ? 15 : 10);
   
 ## Instrucciones <a name="instrucciones"></a>
 
-Quetzal contará con varias instrucciones para su ejecución, cada instrucción pueder terminar con un punto y coma (`;`) o no. Las instrucciones que Quetzal acepta son:
+Quetzal contará con varias instrucciones para su ejecución, cada instrucción deber terminar con un punto y coma (`;`) siempre. Las instrucciones que Quetzal acepta son:
 
 ### Impresión <a name="impresion"></a>
 
@@ -278,7 +278,7 @@ Quetzal también tiene la opción de imprimir arreglos y struct. Por ejemplo:
 
 ### Declaraciones y Asignaciones <a name="decyasi"></a>
 
-Quetzal permite la declaración y asignación de variables, las variables pueden cambiar su tipo de dato en cualquier momento
+Quetzal permite la declaración y asignación de variables, las NO variables pueden cambiar su tipo de dato en cualquier momento
 
 - **Declaración:** Quetzal permite declarar variables de dos maneras:
 ```java
@@ -424,16 +424,16 @@ switch(expression) {
 Ejemplo:
 ```java
 if(x == 8){
-    var1 = (x + 8)::Int64;
+    int var1 = (x + 8);
     println(sqrt(var1));
 }
 
 if(x == 8){
-    var1 = (x + 8)::Int64;
+    int var1 = (x + 8);
     println(sqrt(var1));
 }
 elseif(x < 8){
-    var1 = (x/3)::Float64;
+    double var1 = (x/3);
     println(sin(var1));
 }
 else
