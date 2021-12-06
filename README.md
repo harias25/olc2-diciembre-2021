@@ -358,7 +358,7 @@ Quetzal utiliza diversas funciones nativas para sus expresiones, estas son:
 Las funcioens son secuencias de sentencias que ejecuta una operación que nosotros deseamos. Cuando se crea una función se especifica su nombre y secuencia de sentencias. Luego, ya se puede llamar a estas usando su nombre y los parámetros solicitados. Se definen las funciones en Quetzal así:
 
 ```java
-function NOMBRE_FUNCION(LISTA_PARAMETROS){
+TIPO NOMBRE_FUNCION(LISTA_PARAMETROS){
     LISTA_INSTRUCCIONES
 }
 ```
@@ -366,7 +366,7 @@ function NOMBRE_FUNCION(LISTA_PARAMETROS){
 Por ejemplo:
 
 ```java
-function imprimirHola(){
+TIPO imprimirHola(){
     print("Hola")
     println(" Mundo");
 }
@@ -375,7 +375,7 @@ function imprimirHola(){
 Además, los parámetros de las funciones vendrán separadas por `,` y podrán o no llevar tipo de dato.
 
 ```java
-function sumar(int num1, double num2){
+TIPO sumar(int num1, double num2){
     return num1 + toInt(num2);
 }
 ```
@@ -1026,5 +1026,5 @@ https://web.mit.edu/course/21/21.guide/docution.htm
 -	La entrega será mediante github, y se va a tomar como entrega el código fuente publicado en el repositorio a la fecha y hora establecidos. 
 -	Cualquier commit luego de la fecha y hora establecidos invalidará el proyecto, por lo que no se tendrá derecho a calificación. 
 -	No habrá prorroga 
--	Fecha de entrega:  Viernes 8 de noviembre a las 23:59 PM 
+-	Fecha de entrega:  Viernes 20 de diciembre a las 23:59 PM 
 
