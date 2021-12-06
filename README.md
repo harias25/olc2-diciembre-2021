@@ -386,7 +386,7 @@ Las funciones también pueden llamarse a sí mismas. Lo que permite una gran var
 
 ### Condicionales <a name="condicionales"></a>
 
-Quetzal cuenta con sentencias condicionales, lo que permite que un bloque de codigo pueda ser o no ejecutado. Estas se definen por `if`,`if...else` y `if...elseif` y adicional con la sentencia switch case. Su estructura es la siguiente:
+Quetzal cuenta con sentencias condicionales, lo que permite que un bloque de codigo pueda ser o no ejecutado. Estas se definen por `if`,`if...else` y `if...else if` y adicional con la sentencia switch case. Su estructura es la siguiente:
 ```java
 
 if (CONDICION){
@@ -399,7 +399,7 @@ if (CONDICION)
 if(CONDICION1){
   LISTA_INTRUCCIONES
 }
-elseif(CONDICION1){
+else if(CONDICION1){
   LISTA_INTRUCCIONES
 }
 else{
@@ -432,7 +432,7 @@ if(x == 8){
     int var1 = (x + 8);
     println(sqrt(var1));
 }
-elseif(x < 8){
+else if(x < 8){
     double var1 = (x/3);
     println(sin(var1));
 }
