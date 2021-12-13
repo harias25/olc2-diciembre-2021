@@ -834,7 +834,9 @@ Print(“%d”, T2);
 Estos son bloques de código a los cuales se accede únicamente con una llamada al método. Al finalizar su ejecución se retorna el control al punto donde fue llamado para continuar con las siguientes instrucciones.
 
 ```c
-function funcion1(number a, number b) : number{     number c = a + b;     return c; 
+int funcion1(number a, number b){     
+     int c = a + b;     
+     return c; 
 } 
  
 void funcion1(){ 
@@ -876,7 +878,8 @@ Void main(){
   return;  
 } 
  
-Void Funcion1(){   printf(“%d”, 100); 
+Void Funcion1(){   
+  printf(“%d”, 100); 
   return;  
 } 
 
@@ -947,7 +950,10 @@ En esta sección se definirán todas las variables y estructuras a utilizar. Ún
 ```c
 #include <stdio.h> //Importar para el uso de Printf 
   
-float heap[16384]; //Estructura para heap float stack[16394]; //Estructura para stack float p; //Puntero P float h; //Puntero H 
+float heap[16384]; //Estructura para heap 
+float stack[16394]; //Estructura para stack 
+float p; //Puntero P 
+float h; //Puntero H 
 float t1, t2, t3, t4, t5, t6, t7, t8, t9, t10; //Lista de temporales utilizados  
 ```
 
