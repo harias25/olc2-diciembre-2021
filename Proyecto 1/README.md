@@ -850,9 +850,11 @@ void funcion1(){
  
     T7 = P + 3; 
     T8 = STACK[T7]; //Obtengo la Variable c 
-    STACK[P] = T8; //Guardo el valor que retorna la funcion     goto L0; //Simulacion de un return con saltos a etiquetas 
+    STACK[P] = T8; //Guardo el valor que retorna la funcion     
+    goto L0; //Simulacion de un return con saltos a etiquetas 
  
-    L0: //Etiqueta de retorno     return; 
+    L0: //Etiqueta de retorno     
+    return; 
 }  
 ```
 
