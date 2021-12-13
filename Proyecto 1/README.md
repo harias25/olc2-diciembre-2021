@@ -834,7 +834,7 @@ Print(“%d”, T2);
 Estos son bloques de código a los cuales se accede únicamente con una llamada al método. Al finalizar su ejecución se retorna el control al punto donde fue llamado para continuar con las siguientes instrucciones.
 
 ```c
-int funcion1(number a, number b){     
+int funcion1(int a, int b){     
      int c = a + b;     
      return c; 
 } 
