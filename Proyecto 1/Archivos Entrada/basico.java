@@ -60,7 +60,7 @@ void main(){
     double val4 = val1 - val2 + val3; //El resultado es 144917.35310981676
     int resultado = toInt(val4);  //144917
     if(resultado == 144917){
-        console.log('Aritmeticas 100');
+        println('Aritmeticas 100');
         aritmeticas = 1;
     }
 
