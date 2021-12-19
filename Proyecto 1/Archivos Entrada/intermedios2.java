@@ -42,6 +42,6 @@ void quickSort(int low, int high, int[] array){
 void main(){
     int[] array  = [8, 48, 69, 12, 25, 98, 71, 33, 129, 5];
     quickSort(0, array.length() - 1, array);
-    println('QuickSort: ', array);  // [5,8,12,25,33,48,69,71,98,129]
+    println("QuickSort: ", array);  // [5,8,12,25,33,48,69,71,98,129]
 }
 
