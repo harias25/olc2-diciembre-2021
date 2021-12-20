@@ -1,7 +1,7 @@
 int var1 = 10;
 int var2 = 20;
 double punteoBasicas = 0.0;
-double declaracion, asignacion, aritmeticas, relacionales, logicas, print;
+double declaracion, asignacion, aritmeticas, relacionales, logicas;
 
 int dimension = 3;
 String[] arreglo = ["Estudiante1", "Estudiante2", "Estudiante3"];
