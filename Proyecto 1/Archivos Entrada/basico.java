@@ -56,10 +56,10 @@ void main(){
 
     val1 = 7 - (5 + 10 * (20 / 5 - 2 + 4 * (5 + 2 * 3)) - 8 * 3 % 2) + 50 * (6 * 2); //142.0
     val2 = pow(2,4) - 9 * (8 - 6 * (pow(3,2) - 6 * 5 - 7 * (9 + pow(7,3)) + 10) - 5 ) + 8 * (36 / 6 - 5 * ( 2 * 3)); //-133853.0
-    val3 = (pow(8,3) * pow(8,2) - sqrt(4) + tan(12) + sin(60) + 2) / 3; //10922.353109816746
-    double val4 = val1 - val2 + val3; //El resultado es 144917.35310981676
-    int resultado = toInt(val4);  //144917
-    if(resultado == 144917){
+    val3 = (pow(8,3) * pow(8,2) - sqrt(4) + tan(12) + sin(60) + 2*cos(60)) / 3; //10922.353109816746
+    double val4 = val1 - val2 + val3; //El resultado es 144916.05150116314
+    int resultado = toInt(val4);  //144916
+    if(resultado == 144916){
         println("Aritmeticas 100");
         aritmeticas = 1;
     }
