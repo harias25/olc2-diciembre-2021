@@ -29,7 +29,7 @@ void main(){
 
 
 void StructBasico(){
-    t persona = persona("Calificacion",25);
+    t persona = t("Calificacion",25);
     println(persona);
 
     persona.nombre = "Cambio";

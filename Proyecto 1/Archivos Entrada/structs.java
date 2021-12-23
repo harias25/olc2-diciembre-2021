@@ -1,12 +1,12 @@
 /**** Arbol binario de busqueda ***/
-struct Nodo = {
+struct Nodo {
     Nodo izq,
     Nodo der,
     int indice,
     String nombre
 };
 
-struct Arbol = {
+struct Arbol {
     Nodo raiz 
 };
 
