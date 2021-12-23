@@ -67,6 +67,10 @@ void cambio(Nodo raiz, int indice, String nuevoNombe){
     cambio(raiz.der, indice, nuevoNombe);
 }
 
+Nodo getNodoRaiz(Arbol a){
+    return a.raiz;
+}
+
 void main(){
     println("-------- INSERTANDO ---------");
 	arbol.raiz = insertar(arbol.raiz, 10,"id1");
@@ -86,6 +90,11 @@ void main(){
 	cambio(arbol.raiz,3,"idnuevo"); // (* RESULTADO: Econtrado 3 *)
 	cambio(arbol.raiz,4,"no encontrado");  //(*RESULTADO: No encontrado 4*)
 	inOrden(arbol.raiz); 
+
+    println("--------- OBTENIENDO RAIZ FINAL --------");
+    println(getNodoRaiz(arbol).nombre)
+    println(getNodoRaiz(arbol).der.nombre);
+    println(getNodoRaiz(arbol).izq.nombre);
 }
 
 /*
@@ -120,4 +129,10 @@ Indice: 9  Dato: id4
 Indice: 10  Dato: id1
 Indice: 12  Dato: id3
 Indice: 14  Dato: id6
+
+--------- OBTENIENDO RAIZ FINAL --------
+id1
+id3
+id2
+
 */
