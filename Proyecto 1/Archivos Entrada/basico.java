@@ -30,13 +30,13 @@ void main(){
         declaracion = 0.0;
     }
 
-    println("El valor de var1 global es 10=$a");  //10
+    println("El valor de var1 global es 10=$var1");  //10
     if(var1==10){
         declaracion = declaracion + 0.25; 
     }
 
     int var1 = 5*5;
-    println("El valor de var1 local es $a");  //25
+    println("El valor de var1 local es $var1");  //25
     if(var1==25){
         declaracion = declaracion + 0.25; 
     }
@@ -123,6 +123,11 @@ void main(){
     agregar(2,0, -1);
 
 /*
+El valor defecto de declaracion es 0 = 0
+El valor defecto de asignacion es 0 = 0 y de aritmeticas 0 = 0
+Probando Manejo de Entornos
+El valor de var1 global es 10=10
+El valor de var1 local es 25
 Declaraciones 1
 Asignaciones 1
 Aritmeticas 100
