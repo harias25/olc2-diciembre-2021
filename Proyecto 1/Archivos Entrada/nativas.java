@@ -37,20 +37,20 @@ void main(){
     println(stack.length); //20
     println(stack);
 
-    for(let i = 0; i < 10; i++){
+    for(int i = 0; i < 10; i++){
         desapilar();
     }
     println(stack.length); //10
     println(stack);
 
-    for(let i = 10; i < 55; i++){
+    for(int i = 10; i < 55; i++){
         apilar(i);
     }
 
     println(stack.length); //50
     println(stack);
     String temp = "";
-    for(let i of stack){
+    for(int i on stack){
         temp = temp & "|" & i & "|" & stack[i] & "|\n";
     }
     println("Pos | Val \n",temp);
