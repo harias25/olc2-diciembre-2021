@@ -5,12 +5,12 @@
     int[] arreglo = [1,2,3,4,5];
     boolean[] arreglo2 = [true, false];
 
-struct t = {
+struct t {
     String nombre,
     int edad
 };
 
-struct x = {
+struct x {
     String personaje,
     boolean booleano
 };
