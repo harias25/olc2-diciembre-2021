@@ -34,23 +34,23 @@ void main(){
     for(int i = 1; i < 20 && !estadoPila(); i++){
         apilar(i);
     }
-    println(stack.length); //20
+    println(stack.length()); //20
     println(stack);
 
     for(int i = 0; i < 10; i++){
         desapilar();
     }
-    println(stack.length); //10
+    println(stack.length()); //10
     println(stack);
 
     for(int i = 10; i < 55; i++){
         apilar(i);
     }
 
-    println(stack.length); //50
+    println(stack.length()); //50
     println(stack);
     String temp = "";
-    for(int i on stack){
+    for  i in stack{
         temp = temp & "|" & i & "|" & stack[i] & "|\n";
     }
     println("Pos | Val \n",temp);

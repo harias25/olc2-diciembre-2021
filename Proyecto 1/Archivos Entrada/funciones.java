@@ -29,7 +29,7 @@ int recursiva_sencilla(int num)
     }
 }
 
-void Main()
+void main()
 {
     println("=====================================================");
     println("===========FUNCIONES RECURSIVAS======================");
@@ -37,9 +37,9 @@ void Main()
     println("");
 
     println("==============FACTORIAL==============================");
-    println(recursiva_sencilla(15));
+    println(recursiva_sencilla(10));  //
     println("===============ACKERMAN==============================");
-    println(recusiva1(3, 8));  //2045
+    println(recusiva1(3, 7));  //2045   //1021
     println("===============HANOI=================================");
     juego(4, 1, 2, 3);
 }
@@ -56,25 +56,25 @@ void Main()
 =====================================================
 
 ==============FACTORIAL==============================
-2004310016
+2004310016     -   3628800 
 ===============ACKERMAN==============================
-2045
+2045  -  1021
 ===============HANOI=================================
-mover disco de 1 a 2
-mover disco de 1 a 3
-mover disco de 2 a 3
-mover disco de 1 a 2
-mover disco de 3 a 1
-mover disco de 3 a 2
-mover disco de 1 a 2
-mover disco de 1 a 3
-mover disco de 2 a 3
-mover disco de 2 a 1
-mover disco de 3 a 1
-mover disco de 2 a 3
-mover disco de 1 a 2
-mover disco de 1 a 3
-mover disco de 2 a 3
+Mover de 1 a 2
+Mover de 1 a 3
+Mover de 2 a 3
+Mover de 1 a 2
+Mover de 3 a 1
+Mover de 3 a 2
+Mover de 1 a 2
+Mover de 1 a 3
+Mover de 2 a 3
+Mover de 2 a 1
+Mover de 3 a 1
+Mover de 2 a 3
+Mover de 1 a 2
+Mover de 1 a 3
+Mover de 2 a 3
 
 
 */
