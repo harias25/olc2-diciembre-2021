@@ -131,6 +131,7 @@ El valor de var1 local es 25
 Declaraciones 1
 Asignaciones 1
 Aritmeticas 100
+true,false
 Lógica 1 = false,true,false,true
 Lógica 2 = true,false
 Calificacion Calificacion Calificacion 

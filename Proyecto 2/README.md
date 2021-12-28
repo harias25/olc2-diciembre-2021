@@ -101,22 +101,75 @@ Se requiere la implementación de una Aplicación Web que permita el ánalisis d
 #### **Componentes de la aplicación:** 
     Características básicas 
     •	Carga de Archivo de Datos
-    •	Sección de Pametrización de Variables 
+![Carga de Archivo de Datos](./imagenes/carga.png)
+
+    •	Sección de Pametrización de Variables y Reporte 
+![Configuración y Selección de Reporte ](./imagenes/configuracion.png)
     •	Sección de Salidas de Reportes y Estadisticas.
+![Reporte](./imagenes/carga.png)
+
 
 #### **Mensajes:**
 <div style="text-align: justify">
 Los mensajes son un área especial dentro de la aplicación, con los cuales nos podrá indicar las notificaciones de errores, advertencias o mensajes satisfactorios que se produjeron durante el proceso de análisis de un archivo de entrada. 
  </div>
 
+
+
+
 ## Flujo de Aplicación <a name="flujo"></a>
 <div style="text-align: justify">
+A continuación, se explica el flujo de la aplicación. 
+La aplicación es sencilla por lo que su funcionalidad se basa en cargar una fuente de datos, selección el análisis y parametrización de campos y desplegar reportes. 
 
+-	Carga de Fuente de Datos: Esta opción será la encargada de cargar una fuente en formato de .csv, .xls, .xlsx y .json
+
+-	Parametrización: Esta opción nos va a permitir vincular los nombres de los campos de los archivos, con los nombres de las variables que la aplicación utilice para poder hacer una correcta vinculación de la información.
+
+-   Selección de Análisis: Con esto seleccionaremos el tipo de predicción y análisis a realizar.
+
+-	Reportes: Esta opción nos va a permitir visualizar los reportes generados después de ánalizar un archivo y posterior la descarga en PDF de este.
+
+
+
+![Flujo de Aplicación](./imagenes/flujo.png)
 </div>
 
 ## Restricciones y Entregables <a name="entregables"></a>
 <div style="text-align: justify">
+### **Restricciones**
+- La única herramienta permitida para el análisis y predicciones es Scikit-Learn. La documentación se encuentra en el siguiente enlace https://scikit-learn.org/stable/index.html
+- Se permite únicamente resolver cada problema por medio de regresiones lineales. La documentación se encuentra en el siguiente enlace https://scikit-learn.org/stable/modules/linear_model.html#polynomial-regression-extending-linear-models-with-basis-functions
+- Queda a la discreción del estudiante el framework a utilizar para su fronend, sin embargo el backend debe realizarse únicamente con Python.
+-	Copias de proyectos tendrán de manera automática una nota de 0 puntos y serán reportados a la Escuela de Ciencias y Sistemas los involucrados. 
+-	El único método de calificación será por medio de un servicio de la nube (Heroku, AWS, GCP, Digital Ocean, Azure), si no esta publicado se tendrá una nota de de 0 puntos.
+-	El desarrollo y entrega del proyecto es individual. 
+-	Únicamente se permite el uso de las siguientes regresiones lineales. 
+        - Mínimos cuadrados ordinarios
+        - Regresión logística
+        - Regresión lineal generalizada
+        - Regresión polinomial: extender modelos lineales con funciones base
 
+### **Consideraciones**
+- No hay requerimientos mínimos. 
+- Durante la calificación se realizarán preguntas sobre el código para verificar la autoría de este, de no responder correctamente la mayoría de las preguntas se reportará la copia. 
+- El repositorio únicamente debe contener el código fuente empleado para el desarrollo y el código que correrá en el servidor de la nube no deben existir archivos pdf o docx (utilizar un archivo .gitignore). 
+- Se deben poder descargar los reportes para tener la nota de este inciso.
+- No se pueden modificar las fuentes de datos para modificar los nombres de las columnas, solo se harán excepeciones si algun simbolo da algún conflicto.	
+
+### **Calificación**
+-	La calificación del proyecto será mediante la aplicación web publicada en el servidor de la nube.
+-   Se solicitará al estudiante mostrar la última versión publicada en el servidor, de no poder demostrar no se podrá calificar.
+-	El tiempo de calificación será de 20 minutos (puede aumentar dependiendo la cantidad de proyectos entregados). 
+-	La hoja de calificación describe cada aspecto a calificar, por lo tanto, si la funcionalidad a calificar falla en la sección indicada se tendrá 0 puntos en esa funcionalidad y esa nota no podrá cambiar si dicha funcionalidad funciona en otra sección. 
+-	Los archivos de entrada NO podrán ser modificados. 
+-	Se utilizarán estadisticas de diferentes paises para validar que los resultados esten el rango permitido.
+
+### **Entrega del proyecto**
+-	La entrega será mediante github, y se va a tomar como entrega el código fuente publicado en el repositorio a la fecha y hora establecidos. 
+-	Cualquier commit luego de la fecha y hora establecidos invalidará el proyecto, por lo que no se tendrá derecho a calificación. 
+-	No habrá prorroga 
+-	Fecha de entrega:  Lunes 03 de enero a las 23:59 PM 
 </div>
 
 ## Referencias  <a name="referencias"></a>
