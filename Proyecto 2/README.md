@@ -135,7 +135,9 @@ La aplicación es sencilla por lo que su funcionalidad se basa en cargar una fue
 ![Flujo de Aplicación](./imagenes/flujo.png)
 </div>
 
+
 ## Restricciones y Entregables <a name="entregables"></a>
+
 <div style="text-align: justify">
 ### **Restricciones**
 - La única herramienta permitida para el análisis y predicciones es Scikit-Learn. La documentación se encuentra en el siguiente enlace https://scikit-learn.org/stable/index.html
@@ -168,6 +170,7 @@ La aplicación es sencilla por lo que su funcionalidad se basa en cargar una fue
 ### **Entrega del proyecto**
 -	La entrega será mediante github, y se va a tomar como entrega el código fuente publicado en el repositorio a la fecha y hora establecidos. 
 -	Cualquier commit luego de la fecha y hora establecidos invalidará el proyecto, por lo que no se tendrá derecho a calificación. 
+-   Si el servidor no tiene el fuente con la hora y fecha del repositorio invalidará el proyecto, por lo que no se tendrá derecho a calificación. 
 -	No habrá prorroga 
 -	Fecha de entrega:  Lunes 03 de enero a las 23:59 PM 
 </div>
